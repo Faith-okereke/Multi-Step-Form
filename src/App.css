@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+body {
+  display: grid;
+  place-items: center;
+  min-width: 100vw;
+  margin-top: 40px;
+  background-color: hsl(217, 100%, 97%);
+  padding: 10px;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  padding-top: 50px;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+.all {
+  background-color: #fff;
+  padding: 9px;
+  display: flex;
+  border-radius: 10px;
+}
+.sideBarInfo {
+  display: flex;
+  padding-top: 10px;
+  gap: 1rem;
+  align-items: center;
+}
+.sideBarInfo .items {
+  text-transform: uppercase;
+  gap: 0;
+  color: #fff;
+  padding-top: 10px;
+}
+.sideBarInfo .items p:nth-child(1) {
+  font-size: 9px;
+}
+.sideBarInfo .items p:nth-child(2) {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+.navlinks {
+  color: #fff;
+  text-decoration: none;
+}
+
+.mainSection {
+  padding-left: 80px;
+  padding-top: 30px;
+  padding-right: 40px;
+}
+.mainSection h2 {
+  color: hsl(213, 96%, 18%);
+  padding-bottom: 10px;
+}
+.mainSection p {
+  color: hsl(231, 11%, 63%);
+  font-size: 13px;
+  padding-bottom: 15px;
+}
+form label {
+  color: hsl(213, 96%, 18%);
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid hsl(229, 24%, 87%);
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+.bottom a {
+  color: hsl(231, 11%, 63%);
+  font-size: 13px;
+  cursor: pointer;
+  padding-left: 40px;
+}
+button {
+  background-color: hsl(213, 96%, 18%);
+  padding: 10px 12px;
+  border-radius: 7px;
+  color: #fff;
+  border: 0;
+  font-size: 12px;
+  float: right;
+  cursor: pointer;
+}
+/* StepTwo */
+.stepTwo {
+  padding-left: 80px;
+  padding-top: 30px;
+  padding-right: 40px;
+}
+.stepTwo p {
+  color: hsl(231, 11%, 63%);
+  font-size: 12px;
+}
+.stepTwo h2 {
+  color: hsl(213, 96%, 18%);
+  padding-bottom: 10px;
+}
+.stepTwoFlex div {
+  border: 1px solid hsl(231, 11%, 63%);
+  padding: 10px;
+  padding-right: 30px;
+  border-radius: 7px;
+  margin-top: 40px;
+}
+.stepTwoFlex {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+.stepTwoFlex div h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: hsl(213, 96%, 18%);
+}
+.stepTwoFlex div img {
+  margin-bottom: 15px;
+}
+.stepTwoFlex div p {
+  font-size: 9px;
+}
+.boxes {
+  display: flex;
+  gap: 6rem;
+  justify-content: space-between;
+  border: 1px solid hsl(231, 11%, 63%);
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+.boxes div h4 {
+  color: hsl(213, 96%, 18%);
+  font-size: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+.boxes div p {
+  font-size: 9px;
+}
+.boxes-first {
+  display: flex;
+  gap: 1.5rem;
+}
+.free {
+  color: hsl(213, 96%, 18%);
+  padding-top: 5px;
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 2px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: hsl(213, 96%, 18%);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px hsl(213, 96%, 18%);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.change {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40%;
+}
+.finish-all {
+  background-color: hsl(231, 100%, 99%);
+  border-radius: 8px;
+  padding: 10px;
+}
+.finish {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid hsl(231, 11%, 63%);
+  margin-bottom: 10px;
+}
+.finish-2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  align-items: center;
+  /* padding: 10px; */
+  margin-bottom: 10px;
+}
+.span-change {
+  font-size: 6px;
+  cursor: pointer;
+  padding-top: 7px;
+  text-decoration: underline;
+}
+.totalling {
+  padding: 10px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: center;
+}
+.thankyou-head {
+  text-align: center;
+}
+.thankyou {
+  width: 400px;
+  line-height: 1.4rem;
+  text-align: center;
+}
+.check {
+  margin: 30px;
+}
+.this {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  
+}
+
+.switch {
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  top: 70%;
+  left:50%;
+  /* right: 0;
+  bottom: 0; */
+  background-color: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+input[type='checkbox']:checked + .switch {
+  background-color: hsl(213, 96%, 18%); /* Color when the switch is ON */
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input[type='checkbox']:checked + .switch::before {
+  transform: translateX(20px); /* Move the circle to the right when the switch is ON */
+}
