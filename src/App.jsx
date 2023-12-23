@@ -10,7 +10,6 @@ function App() {
   const formArr = [1, 2, 3, 4];
   const [state, setState] = useState(formArr[0]);
   const forward = () => {
-    
     setState(state + 1);
   };
   const backward = () => {
@@ -36,10 +35,16 @@ function App() {
                   Go back
                 </a>
               )}
-
-              <button onClick={state === !4 ? submit : forward} type="submit">
+  <div className={state == 1 ? "firstPage" : ""}>
+  <button
+                
+                onClick={state === !4 ? submit : forward}
+                type="submit"
+              >
                 {state === 4 ? "Confirm" : "Next"}
               </button>
+  </div>
+             
             </div>
           )}
         </div>

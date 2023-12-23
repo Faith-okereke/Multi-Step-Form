@@ -1,7 +1,7 @@
 import "/src/App.css";
 import { NavBar } from "../Data/NavBarData";
 import backgroundImage from "../../assets/images/bg-sidebar-desktop.svg";
-export default function Nav() {
+export default function Nav(prop) {
   return (
     <>
       <nav
