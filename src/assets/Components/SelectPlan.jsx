@@ -1,6 +1,7 @@
 import "/src/App.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { PlanData } from "../Data/SelectPlanData";
+import Context from "../Context/Context";
 
 export default function SelectPlan() {
   const [isChecked, setChecked] = useState(false);
@@ -11,6 +12,7 @@ export default function SelectPlan() {
   const selectPlan = () => {
     setSelected(true);
   };
+  const {monthly, selectedPlan, selectPeriodHandler, selectPlanHandler } = useContext(Context)
   return (
     <div className="stepTwo">
       <h2>Select your plan</h2>

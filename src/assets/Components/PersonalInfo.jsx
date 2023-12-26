@@ -1,4 +1,6 @@
 import "/src/App.css";
+import { useContext, createContext } from "react";
+import Context from "../Context/Context";
 
 export default function StepOne() {
   const elments = {
@@ -6,6 +8,7 @@ export default function StepOne() {
     email: "",
     number: "",
   };
+const Context = createContext()
   return (
     <>
       <div className="mainSection">
