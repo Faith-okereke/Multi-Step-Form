@@ -66,17 +66,17 @@ body {
   font-size: 13px;
   padding-bottom: 15px;
 }
-form label {
+#personalnfo label {
   color: hsl(213, 96%, 18%);
   font-size: 13px;
   padding-bottom: 5px;
 }
-form div {
+#personalnfo div {
   display: flex;
   flex-direction: column;
   padding-bottom: 15px;
 }
-form input {
+#personalnfo input {
   padding: 8px;
   border-radius: 6px;
   border: 1px solid hsl(229, 24%, 87%);
@@ -85,23 +85,17 @@ form input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding-top: 30px;
 }
-.bottom a {
+.bottom .goBack {
   color: hsl(231, 11%, 63%);
   font-size: 13px;
   cursor: pointer;
-  padding-left: 40px;
+  padding-top: 40px;
+  text-decoration: none;
 }
 button {
-  background-color: hsl(213, 96%, 18%);
-  padding: 10px 12px;
-  border-radius: 7px;
-  color: #fff;
-  border: 0;
-  font-size: 12px;
   float: right;
-  cursor: pointer;
 }
 /* StepTwo */
 .stepTwo {
@@ -121,6 +115,7 @@ button {
   border: 1px solid hsl(231, 11%, 63%);
   padding: 10px;
   padding-right: 30px;
+  cursor: pointer;
   border-radius: 7px;
   margin-top: 40px;
 }
@@ -141,6 +136,7 @@ button {
 .stepTwoFlex div p {
   font-size: 9px;
 }
+
 .boxes {
   display: flex;
   gap: 6rem;
@@ -168,6 +164,9 @@ button {
   display: flex;
   gap: 1.5rem;
 }
+.boxes-first input{
+  cursor: pointer;
+}
 .free {
   color: hsl(213, 96%, 18%);
   padding-top: 5px;
@@ -178,6 +177,9 @@ button {
 
 .slider.round:before {
   border-radius: 50%;
+}
+.toggle-div span{
+  font-size: 10px;
 }
 .switch {
   position: relative;
