@@ -60,7 +60,7 @@ function AddOns() {
             <p>{selectedYearlyPlan?`+$${item.price*10}/yr` : `+$${item.price}/mo`}</p>
           </div>
         ))}
-        <div className="bottom">
+        <div className="bottom mt-0">
           <Link className="goBack no-underline" to="/select-plan">
             Go back
           </Link>
@@ -69,6 +69,7 @@ function AddOns() {
               navigate("/review");
             }}
             type="submit"
+            className="bg-blue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
           >
             Next
           </button>

@@ -142,7 +142,7 @@ button {
   gap: 6rem;
   justify-content: space-between;
   border: 1px solid hsl(231, 11%, 63%);
-  padding: 8px;
+  padding: 6px;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 10px;
@@ -249,15 +249,13 @@ input:checked + .slider:before {
   gap: 1rem;
   align-items: center;
   border-bottom: 1px solid hsl(231, 11%, 63%);
-  margin-bottom: 10px;
 }
 .finish-2 {
   display: flex;
   justify-content: space-between;
   gap: 5rem;
   align-items: center;
-  /* padding: 10px; */
-  margin-bottom: 10px;
+  /* padding: 5px; */
 }
 .span-change {
   font-size: 6px;

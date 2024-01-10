@@ -29,51 +29,21 @@ export const PlanData =({children})=> {
         }
     ]
     )
-    const [yearly, setYearly] = useState([
-        {
-            id: 1,
-            img: arcade,
-            plan: "Arcade",
-            price: " $90",
-            
-    
-        },
-        {
-            id: 2,
-            img: advanced,
-            plan: "Advanced",
-            price: " $120",
-        },
-        {
-            id: 3,
-            img: pro,
-            plan: "Pro",
-            price: " $150",
-        }
-    ]
-    
-    )
-    
-  const [selectedMonthlyPlan, setSelectedMonthlyPlan] = useState({
-    title: "",
-    price : null,
-  });
-
-  const [selectedYearlyPlan, setSelectedYearlyPlan] = useState({
-    title: "",
-    price: null
-  })
+    const [selectedPlans, setSelectedPlans] = useState({
+        title: "",
+        price: 0,
+        id:null
+      });
+      
+      
     return(
         <ContextPlans.Provider 
         value={{
             monthly,
             setMonthly,
-            yearly,
-            setYearly,
-            selectedMonthlyPlan,
-            setSelectedMonthlyPlan,
-            selectedYearlyPlan,
-            setSelectedYearlyPlan
+            selectedPlans,
+            setSelectedPlans
+           
         }} >
             {children}
         </ContextPlans.Provider>

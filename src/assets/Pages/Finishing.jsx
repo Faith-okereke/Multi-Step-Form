@@ -19,8 +19,8 @@ function Finishing() {
       <p> Double-check everything looks OK before confirming.</p>
       <div className="finish-all">
         <div className="finish">
-          <div>
-            <h5>{selectedPlan}</h5> <Link className="span-change text-sm" to="/select-plan">
+          <div className="flex gap-2 items-center">
+            <h5>Arcade</h5> <Link className="span-change text-xxs" to="/select-plan">
             Change
           </Link>
           </div>
@@ -38,7 +38,7 @@ function Finishing() {
         
       </div>
       <div className="totalling">
-        <p>{`Total(per })`}</p>
+        <p>{`Total(per month)`}</p>
         <p>{}</p>
       </div>
       <div className="bottom">
@@ -47,7 +47,7 @@ function Finishing() {
           </Link>
           <button  onClick={() => {
           navigate("/thank-you");
-        }} className="bg-hsl-213-96-18 text-white py-2 px-3 rounded-md text-sm float-right cursor-pointer">
+        }}className="bg-blue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8">
             Next
           </button>
         </div>

@@ -1,7 +1,6 @@
 import "/src/App.css";
 import { useContext, createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Context from "../Context/Context";
 import SelectPlan from "./SelectPlan";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,7 +31,7 @@ export default function Personalnfo() {
   function changeInput(e) {
     setElements({
       ...elments,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value, 
     });
   }
   return (
@@ -78,7 +77,7 @@ export default function Personalnfo() {
             </div>
             <button
               type="submit"
-              className="bg-dark text-white py-2 px-3 rounded-md float-right cursor-pointer text-xs"
+              className="bg-blue text-white py-2 px-3 rounded-md float-right cursor-pointer text-xs"
             >
               Next
             </button>
