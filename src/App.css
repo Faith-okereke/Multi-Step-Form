@@ -27,6 +27,7 @@ body {
   display: flex;
   border-radius: 10px;
 }
+
 .sideBarInfo {
   display: flex;
   padding-top: 10px;
@@ -93,7 +94,12 @@ body {
   cursor: pointer;
   padding-top: 40px;
   text-decoration: none;
+  font-weight: 500;
 }
+.bottom .goBack:hover{
+  color: hsl(213, 96%, 18%);
+}
+
 button {
   float: right;
 }
@@ -114,6 +120,7 @@ button {
 .stepTwoFlex div {
   border: 1px solid hsl(231, 11%, 63%);
   padding: 10px;
+  width: 110px;
   padding-right: 30px;
   cursor: pointer;
   border-radius: 7px;

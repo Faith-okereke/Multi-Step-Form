@@ -30,9 +30,9 @@ export const PlanData =({children})=> {
     ]
     )
     const [selectedPlans, setSelectedPlans] = useState({
-        title: "",
-        price: 0,
-        id:null
+        plan: "",
+        price: undefined,
+        id: null
       });
       
       

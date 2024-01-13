@@ -4,7 +4,7 @@ import backgroundImage from "../../assets/images/bg-sidebar-desktop.svg";
 export default function Nav() {
   return (
     <>
-    <div  className="nav bg-navBar ">
+    <div className="nav bg">
     <nav
         style={{
           backgroundImage: `url(${backgroundImage})`,

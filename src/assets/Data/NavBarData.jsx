@@ -1,18 +1,22 @@
 export const NavBar =[
     {
         id :1,
-        step: "Your Info"
+        step: "Your Info",
+        linkTo : "/"
     },
     {
         id :2,
-        step: "Select Plan"
+        step: "Select Plan",
+        linkTo : "/select-plan"
     },
     {
         id :3,
-        step: "Add-Ons"
+        step: "Add-Ons",
+        linkTo : "/add-ons"
     },
     {
         id :4,
-        step: "Summary"
+        step: "Summary",
+        linkTo : "/review"
     },
 ]

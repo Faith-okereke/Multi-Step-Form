@@ -23,14 +23,15 @@ export const AddOnsContext =({children})=>{
             price: 2,
         },
     ])
-    const [addOnsSelectedValue, setAddOnsSelectedValue] = useState([])
+    const [addOnsSelectedValue, setAddOnsSelectedValue] = useState([
+    ])
     return(
         <AddContext.Provider 
         value={{
             addOnsData,
             setAddOnsData,
             addOnsSelectedValue,
-            setAddOnsSelectedValue
+            setAddOnsSelectedValue,
         }}
         >
         {children}
