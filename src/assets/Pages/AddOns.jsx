@@ -6,34 +6,45 @@ import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function AddOns() {
-
-  const [isChecked, setIsChecked] = useState(true);
-  let {addOnsSelected, setAddOnsSelected} = useContext(AddContext);
+  const [isChecked, setIsChecked] = useState({ checked: false });
+  let { addOnsSelectedValue, setAddOnsSelectedValue } = useContext(AddContext);
+  const { addOnsData, setAddOnsData } = useContext(AddContext);
   const navigate = useNavigate();
   const SelectAddOns = useContext(AddContext);
-  const { selectedMonthlyPlan } = useContext(ContextPlans);
   const { selectedYearlyPlan } = useContext(ContextPlans);
+  const [num, setNum] = useState(0);
+  const anyCheckboxChecked = Object.values(isChecked).some(
+    (checked) => checked
+  );
 
-  const checkAddons = (e, AddId) => {
+  const checkAddons = (e, id) => {
     const { name, checked } = e.target;
     setIsChecked((prevState) => {
       return {
         ...prevState,
-        [AddId]: checked,
+        [id]: checked,
       };
-    });
+    }, !isChecked);
+    
+    console.log(`Checkbox Checked: ${checked}`);
+    console.log(`Add-on ID: ${id}`);
+
+    setNum(id + 1);
+    setAddOnsSelectedValue((prev) => [...prev, addOnsData[id]]);
+    console.log(addOnsSelectedValue);
+
   };
 
-  const ChooseAddOns = (AddId) => {
-    setAddOnsSelected(AddId);
-    console.log(addOnsSelected)
-  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!anyCheckboxChecked) {
+      toast.error("Select at least one addons");
+    } else {
+      navigate("/review");
+    }
 
- const handleSubmit =(event)=>{
-  event.preventDefault()
-  navigate("/review");
-  
- }
+    console.log(isChecked.checked);
+  };
   return (
     <div className="mainSection">
       <ToastContainer />
@@ -42,7 +53,7 @@ function AddOns() {
       <form>
         {SelectAddOns.addOnsData.map((item) => (
           <div
-            onClick={() => ChooseAddOns(item.id)}
+            onClick={(e) => checkAddons(e, item.id)}
             style={
               isChecked[item.id]
                 ? {
@@ -58,10 +69,9 @@ function AddOns() {
               <input
                 onChange={(e) => checkAddons(e, item.id)}
                 type="checkbox"
-                name="checked"
-                id="checked"
-                value={isChecked[item.id]}
-                checked={isChecked[item.id] || false}
+                name={`checked-${item.id}`}
+                id={`checked-${item.id}`}
+                checked={isChecked[item.id]}
               />
 
               <div>
@@ -69,7 +79,11 @@ function AddOns() {
                 <p>{item.perks}</p>
               </div>
             </div>
-            <p>{selectedYearlyPlan?`+$${item.price*10}/yr` : `+$${item.price}/mo`}</p>
+            <p>
+              {selectedYearlyPlan
+                ? `+$${item.price * 10}/yr`
+                : `+$${item.price}/mo`}
+            </p>
           </div>
         ))}
         <div className="bottom mt-0">

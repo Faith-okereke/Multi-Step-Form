@@ -11,8 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Rootstore>
-        <div
-          style={{ display: "flex", backgroundColor: "#fff", padding: "10px" }}
+        <div className="flex bg-white p-3" 
         >
           <Nav />
           <Routers />

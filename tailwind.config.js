@@ -9,7 +9,11 @@ export default {
       colors:{
         blue : "hsl(213, 96%, 18%)",
         marineBlue : "hsl(213, 96%, 18%)",
-        coolGray : "hsl(231, 11%, 63%)"
+        purpleBlue : "hsl(243, 100%, 62%)",
+        coolGray : "hsl(231, 11%, 63%)",
+        lightGray : "hsl(229, 24%, 87%)",
+        pastelBlue: "hsl(228, 100%, 84%)",
+        lightBlue: "hsl(206, 94%, 87%)"
         
       },
       borderColor:{
