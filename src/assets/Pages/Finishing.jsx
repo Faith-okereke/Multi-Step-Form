@@ -16,34 +16,34 @@ function Finishing() {
   console.log(selectedPlans)
   console.log(addOnsSelectedValue)
   return (
-    <div className="mainSection">
-      <h2>Finishing up</h2>
-      <p> Double-check everything looks OK before confirming.</p>
+    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
+      <h2  className="font-[700] text-[20px]">Finishing up</h2>
+      <p className="pb-[15px] text-[12px] text-coolGray"> Double-check everything looks OK before confirming.</p>
       <div className="finish-all">
-        <div className="finish">
-          <div >
+        <div className="finish border-b-[1px]">
+        <div className="flex items-center justify-between ">
             <h5 className="text-sm font-900 text-marineBlue">
               {selectedPlans.plan} (Monthly)
             </h5>
-            <Link className="text-coolGray span-change " to="/select-plan">
+
+          <p className="text-[10px] font-bold text-marineBlue">${selectedPlans.price}{!selectedMonthlyPlan ? `/mo` : `/yr`}</p>
+        </div>
+        <Link className="text-coolGray span-change " to="/select-plan">
               Change
             </Link>
-          </div>
-
-          <p>${selectedPlans.price}{!selectedMonthlyPlan ? `/mo` : `/yr`}</p>
-        </div>
+            </div>
         {addOnsSelectedValue.map((item, index)=>(
-           <div className="finish-2">
-           <p>{item.topic}</p>
+           <div className="finish-2" key={item.id}>
+           <p className="text-coolGray pt-[10px]">{item.topic}</p>
            <p>${item.price}/mo</p>
          </div>
 
         ))}
            
       </div>
-      <div className="totalling">
-        <p>{`Total(per month)`}</p>
-        <p className="total-price text-lg text-purpleBlue">${totalPerMonth}/mo</p>
+      <div className="totalling pt-[20px] p-[10px] flex justify-between items-center gap-[3rem[">
+        <p className="text-[12px]">{`Total(per month)`}</p>
+        <p className="total-price text-[12px] text-purpleBlue">${totalPerMonth}/mo</p>
       </div>
       <div className="bottom">
         <Link className="goBack no-underline" to="/add-ons">

@@ -22,9 +22,9 @@ function AddOns() {
     setIsChecked((prevState) => {
       return {
         ...prevState,
-        [id]: checked,
+        [name]: checked,
       };
-    }, !isChecked);
+    });
     
     console.log(`Checkbox Checked: ${checked}`);
     console.log(`Add-on ID: ${id}`);
@@ -46,10 +46,12 @@ function AddOns() {
     console.log(isChecked.checked);
   };
   return (
-    <div className="mainSection">
+    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
       <ToastContainer />
-      <h2>Pick add-ons</h2>
-      <p>Add-ons help enhance your gaming experience.</p>
+      <h2 className="font-[700] text-[22px] text-marineBlue">Pick add-ons</h2>
+      <p  className="pb-[15px] text-coolGray text-[12px]
+      
+    ">Add-ons help enhance your gaming experience.</p>
       <form>
         {SelectAddOns.addOnsData.map((item) => (
           <div
@@ -57,12 +59,11 @@ function AddOns() {
             style={
               isChecked[item.id]
                 ? {
-                    border: "1.5px solid  hsl(243, 100%, 62%)",
-                    cursor: "pointer",
+                    border: "1.5px solid hsl(243, 100%, 62%)"
                   }
-                : { border: "1px solid hsl(229, 24%, 87%)", cursor: "pointer" }
+                : { border: "1px solid hsl(229, 24%, 87%)"}
             }
-            className="boxes"
+            className="flex mt-[10px] gap-4 justify-between border-solid border-coolGray rounded-lg cursor-pointer p-1.5 items-center"
             key={item.id}
           >
             <div className="boxes-first">
@@ -75,11 +76,11 @@ function AddOns() {
               />
 
               <div>
-                <h4>{item.topic}</h4>
-                <p>{item.perks}</p>
+                <h4 className="text-marineblue text-[13px] sm:text-[12px] py-1 text-marineBlue text-bold">{item.topic}</h4>
+                <p className="text-[9px] sm:text-[9px] text-coolGray">{item.perks}</p>
               </div>
             </div>
-            <p>
+            <p className="text-[9px] text-purpleBlue">
               {selectedYearlyPlan
                 ? `+$${item.price * 10}/yr`
                 : `+$${item.price}/mo`}
@@ -93,9 +94,9 @@ function AddOns() {
           <button
             onClick={handleSubmit}
             type="submit"
-            className="bg-blue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
+            className="bg-marineBlue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
           >
-            Next
+            Next Step
           </button>
         </div>
       </form>

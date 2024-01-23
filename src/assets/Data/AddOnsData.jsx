@@ -24,6 +24,7 @@ export const AddOnsContext =({children})=>{
         },
     ])
     const [addOnsSelectedValue, setAddOnsSelectedValue] = useState([
+        addOnsData
     ])
     return(
         <AddContext.Provider 

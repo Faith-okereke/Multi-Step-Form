@@ -31,17 +31,20 @@ export default function Personalnfo() {
   function changeInput(e) {
     setElements({
       ...elments,
-      [e.target.name]: e.target.value, 
+      [e.target.name]: e.target.value,
     });
   }
   return (
     <>
-      <div className="mainSection">
+      <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
         <ToastContainer />
         <div className="firstStep">
-          <h2>Personal info</h2>
-          <p> Please provide your name, email address, and phone number.</p>
-          <form  onSubmit={SubmitPersonalInfo} id="personalnfo" action="">
+          <h2 className="font-bold">Personal info</h2>
+          <p className="pb-[15px] text-coolGray text-[12px] sm:text-[14px]">
+            {" "}
+            Please provide your name, email address, and phone number.
+          </p>
+          <form onSubmit={SubmitPersonalInfo} id="personalnfo" action="">
             <div>
               <label htmlFor="Name">Name</label>
               <input
@@ -72,14 +75,13 @@ export default function Personalnfo() {
                 value={elments.number}
               />
             </div>
-            <div>
-              
-            </div>
+            <div></div>
+
             <button
               type="submit"
-              className="bg-blue text-white py-2 px-3 rounded-md float-right cursor-pointer text-xs"
+              className="bg-marineBlue text-white py-2 px-3 rounded-md float-right cursor-pointer text-xs"
             >
-              Next
+              Next Step
             </button>
           </form>
         </div>

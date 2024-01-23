@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors:{
-        blue : "hsl(213, 96%, 18%)",
         marineBlue : "hsl(213, 96%, 18%)",
         purpleBlue : "hsl(243, 100%, 62%)",
         coolGray : "hsl(231, 11%, 63%)",
@@ -17,7 +16,8 @@ export default {
         
       },
       borderColor:{
-        blue: " hsl(206, 94%, 87%)"
+        blue: " hsl(206, 94%, 87%)", 
+        coolGray : "hsl(231, 11%, 63%)",
       },
       backgroundColor:{
         alabaster : "hsl(231, 100%, 99%)",

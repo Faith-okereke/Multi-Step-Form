@@ -25,7 +25,11 @@ export default function SelectPlan() {
     console.log(selectedPlans.plan);
     console.log(selectedPlans.price);
     console.log(num);
-    if (selectedPlans.plan === "" ||selectedPlans.plan === undefined|| selectedPlans.price === undefined ) {
+    if (
+      selectedPlans.plan === "" ||
+      selectedPlans.plan === undefined ||
+      selectedPlans.price === undefined
+    ) {
       toast.error("Select a plan");
     } else {
       navigate("/add-ons");
@@ -53,27 +57,35 @@ export default function SelectPlan() {
     backgroundColor: " hsl(231, 100%, 99%)",
   };
   return (
-    <div className="stepTwo">
+    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
       <ToastContainer />
       <h2 className="font-[700] text-[20px]">Select your plan</h2>
-      <p>You have the option of monthly or yearly billing.</p>
+      <p className="pb-[15px] text-[12px] text-coolGray">You have the option of monthly or yearly billing.</p>
       <form id="selectPlanForm">
-        <div className="stepTwoFlex">
+        <div className="stepTwoFlex flex-col sm:flex-row">
           {SelectPlans.monthly.map((item, idx) => (
             <div
               onClick={() => planSelect(idx)}
-              style={num == idx +1 ? styling : null}
-              className="cursor-pointer w-31"
+              style={num == idx + 1 ? styling : null}
+              className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-[30px] rounded-[7px] w-[250px] sm:mt-[40px]"
               key={item.id}
             >
-              <img src={item.img} alt="" />
-              <h3 className="mt-4">{item.plan}</h3>
-              <p>
-                {isChecked.checked
-                  ? `$${item.price * 10}/yr`
-                  : `$${item.price}/mo`}
-              </p>
-              <p className="free">{isChecked.checked ? "2 months free" : ""}</p>
+              <div className="flex justify-left items-center gap-4  sm:block">
+                <img src={item.img} alt="" />
+                <div>
+                  <h3 className="mt-4 text-marineBlue font-bold text-[13px]">
+                    {item.plan}
+                  </h3>
+                  <p className="p-0 text-[9px] text-coolGray">
+                    {isChecked.checked
+                      ? `$${item.price * 10}/yr`
+                      : `$${item.price}/mo`}
+                  </p>
+                  <p className="text-marineBlue pt-[2px] text-[10px]">
+                    {isChecked.checked ? "2 months free" : ""}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -81,7 +93,7 @@ export default function SelectPlan() {
           <p
             className={`${
               handleToggle ? "text-coolGray " : "text-marineBlue"
-            }"text-[14px] font-[500]"`}
+            }text-[12px] sm:text-[14px] font-[500]"`}
           >
             Monthly
           </p>
@@ -107,20 +119,20 @@ export default function SelectPlan() {
           <p
             className={`${
               handleToggle ? "text-marineBlue" : "text-coolGray "
-            } text-[14px] font-[500]`}
+            } text-[12px] sm:text-[14px] font-[500]`}
           >
             Yearly
           </p>
         </div>
-        <div className="bottom items-center mt-3">
+        <div className="bottom items-center mt-3 sm:mt-[30px]">
           <Link className="goBack no-underline" to="/">
             Go back
           </Link>
           <button
             onClick={handleSubmit}
-            className="bg-blue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
+            className="bg-marineBlue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
           >
-            Next
+            Next Step
           </button>
         </div>
       </form>
