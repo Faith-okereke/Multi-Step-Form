@@ -1,11 +1,11 @@
 import "/src/App.css";
 import { NavBar } from "../Data/NavBarData.jsx";
-import backgroundImage from "../../assets/images/bg-sidebar-desktop.svg";
+
 export default function Nav() {
   return (
     <>
       <div className="nav">
-        <nav className="w-screen sm:w-[200px] bg-[url(src/assets/images/bg-sidebar-mobile.svg)] sm:bg-[url(src/assets/images/bg-sidebar-desktop.svg)] h-[150px] sm:h-[450px] z-[-2] p-[10px] bg-cover bg-repeat sm:block flex justify-center gap-3 items-center">
+        <nav className="w-screen sm:w-[200px] bg-[url(/bg-sidebar-mobile.svg)] sm:bg-[url(/bg-sidebar-desktop.svg)] h-[150px] sm:h-[450px] z-[-2] p-[10px] bg-cover bg-repeat sm:block flex justify-center gap-3 items-center">
           {/* Sidebar start */}
           {NavBar.map((item) => (
             <div

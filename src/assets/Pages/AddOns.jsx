@@ -22,8 +22,8 @@ function AddOns() {
     setIsChecked((prevState) => {
       return {
         ...prevState,
-        [name]: checked,
-      };
+        [id]: checked,
+     } ;
     });
     
     console.log(`Checkbox Checked: ${checked}`);

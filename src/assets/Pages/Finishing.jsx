@@ -23,10 +23,10 @@ function Finishing() {
         <div className="finish border-b-[1px]">
         <div className="flex items-center justify-between ">
             <h5 className="text-sm font-900 text-marineBlue">
-              {selectedPlans.plan} (Monthly)
+              {selectedPlans.plan}{selectedMonthlyPlan ? `(Monthly)` : `(Yearly)`}
             </h5>
 
-          <p className="text-[10px] font-bold text-marineBlue">${selectedPlans.price}{!selectedMonthlyPlan ? `/mo` : `/yr`}</p>
+          <p className="text-[10px] font-bold text-marineBlue">${selectedMonthlyPlan ? `${selectedPlans.price}` : `${selectedPlans.price *10}`}  {selectedMonthlyPlan ? `/mo` : `/yr`}</p>
         </div>
         <Link className="text-coolGray span-change " to="/select-plan">
               Change
@@ -35,7 +35,7 @@ function Finishing() {
         {addOnsSelectedValue.map((item, index)=>(
            <div className="finish-2" key={item.id}>
            <p className="text-coolGray pt-[10px]">{item.topic}</p>
-           <p>${item.price}/mo</p>
+           <p>${selectedMonthlyPlan ? `${item.price}` : `${item.price *10}`}{selectedMonthlyPlan ? `/mo` : `/yr`}</p>
          </div>
 
         ))}
@@ -43,7 +43,7 @@ function Finishing() {
       </div>
       <div className="totalling pt-[20px] p-[10px] flex justify-between items-center gap-[3rem[">
         <p className="text-[12px]">{`Total(per month)`}</p>
-        <p className="total-price text-[12px] text-purpleBlue">${totalPerMonth}/mo</p>
+        <p className="total-price text-[12px] text-purpleBlue">{selectedMonthlyPlan? totalPerMonth: totalPerMonth*10}{selectedMonthlyPlan ? `/mo` : `/yr`}</p>
       </div>
       <div className="bottom">
         <Link className="goBack no-underline" to="/add-ons">
