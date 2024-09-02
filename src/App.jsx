@@ -30,7 +30,7 @@ function App() {
     <div className="md:grid min-h-screen place-items-center bg-fullWhite">
       <div className="flex md:flex-row flex-col md:bg-white bg-fullWhite rounded-lg md:p-3 relative md:mt-10 mt-0">
         <Nav />
-        <div className="md:px-16 px-8 md:pt-6 pt-8 pb-7 md:min-h-[80vh] min-h-[50vh] bg-white  md:m-auto mx-12 -my-12 z-10 rounded-lg md:rounded-none">
+        <div className="md:px-16 px-8 md:pt-6 pt-8 pb-7 md:min-h-[80vh] min-h-[50vh] bg-white  md:m-auto mx-8 -my-12 z-10 rounded-lg md:rounded-none">
           {React.createElement(formComponents[currentStep - 1] ?? "div")}
         </div>
       </div>

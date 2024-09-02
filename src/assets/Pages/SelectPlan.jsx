@@ -66,7 +66,7 @@ export default function SelectPlan() {
             <div
               onClick={() => planSelect(idx)}
               style={num == idx + 1 ? styling : null}
-              className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-[30px] rounded-[7px] w-[250px] sm:mt-[40px] cursor-pointer"
+              className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-6 rounded-md  sm:mt-[40px] cursor-pointer"
               key={item.id}
             >
               <div className="flex justify-left items-center gap-4  sm:block">
