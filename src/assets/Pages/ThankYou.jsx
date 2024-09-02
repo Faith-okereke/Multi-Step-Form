@@ -1,8 +1,17 @@
 import check from "/src/assets/images/icon-thank-you.svg";
-export default function StepFive() {
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+export default function ThankYou() {
+  useEffect(()=>{
+    toast.info("The Page will refresh now")
+    setTimeout(() => {
+      window.location.reload()
+    }, 10000);
+  },)
   return (
-    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
-      <div className="this">
+    <div className="pt-[25%]">
+      <ToastContainer/>
+      <div className="flex flex-col justify-center place-items-center items-center gap-5 m-auto">
         <img className="check w-16 " src={check} alt="check-done" />
 
         <h2 className="text-center"> Thank you!</h2>

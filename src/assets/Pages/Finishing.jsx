@@ -1,64 +1,88 @@
 import "/src/App.css";
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ContextPlans from "../Data/SelectPlanData";
-import AddContext from "../Data/AddOnsData";
+import { useContext } from "react";
+import { ContextData } from "../../ContextStore";
+import { ToastContainer, toast } from "react-toastify";
 
 function Finishing() {
+  const {
+    nextPage,
+    prevPage,
+    selectedPlans,
+    monthlyPlan,
+    addOnsSelectedValue,
+    setCurrentStep
+  } = useContext(ContextData);
 
-  const navigate = useNavigate();
-  const SelectAddOns = useContext(AddContext);
-  const { selectedMonthlyPlan } = useContext(ContextPlans);
-  let { addOnsSelectedValue, setAddOnsSelectedValue } = useContext(AddContext)
-  const { selectedPlans, setSelectedPlans } = useContext(ContextPlans);
-  const SelectPlans = useContext(ContextPlans);
-  const totalPerMonth = selectedPlans.price + addOnsSelectedValue.reduce((total, item) => total + item.price, 0);
-  console.log(selectedPlans)
-  console.log(addOnsSelectedValue)
+  const totalPrice = selectedPlans.price + addOnsSelectedValue.reduce((total, item) => total + item.price, 0);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (addOnsSelectedValue.length === 0) {
+      toast.error("Select at least one add-on");
+    } else {
+      nextPage();
+    }
+  };
+
+  const handleChangePlan = () => {
+    setCurrentStep(2); 
+  };
+
   return (
-    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
-      <h2  className="font-[700] text-[20px]">Finishing up</h2>
-      <p className="pb-[15px] text-[12px] text-coolGray"> Double-check everything looks OK before confirming.</p>
-      <div className="finish-all">
-        <div className="finish border-b-[1px]">
-        <div className="flex items-center justify-between ">
-            <h5 className="text-sm font-900 text-marineBlue">
-              {selectedPlans.plan}{selectedMonthlyPlan ? `(Monthly)` : `(Yearly)`}
-            </h5>
-
-          <p className="text-[10px] font-bold text-marineBlue">${selectedMonthlyPlan ? `${selectedPlans.price}` : `${selectedPlans.price *10}`}  {selectedMonthlyPlan ? `/mo` : `/yr`}</p>
-        </div>
-        <Link className="text-coolGray span-change " to="/select-plan">
-              Change
-            </Link>
+    <div className="">
+      <ToastContainer />
+      <h2 className="font-bold text-[20px]">Finishing up</h2>
+      <p className="pb-[15px] text-[12px] text-coolGray">
+        Double-check everything looks OK before confirming.
+      </p>
+      <div className="bg-lightGray rounded-lg p-3 my-5">
+        <div className="border-b-[1px] border-b-coolGray">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col gap-0">
+              <h5 className="text-sm font-900 text-marineBlue">
+                {selectedPlans.plan} ({monthlyPlan ? 'Monthly' : 'Yearly'})
+              </h5>
+              <a className="text-coolGray span-change hover:underline text-xs cursor-pointer" onClick={handleChangePlan}>
+                Change
+              </a>
             </div>
-        {addOnsSelectedValue.map((item, index)=>(
-           <div className="finish-2" key={item.id}>
-           <p className="text-coolGray pt-[10px]">{item.topic}</p>
-           <p>${selectedMonthlyPlan ? `${item.price}` : `${item.price *10}`}{selectedMonthlyPlan ? `/mo` : `/yr`}</p>
-         </div>
-
+            <p className="text-xs font-bold text-marineBlue">
+              ${monthlyPlan ? selectedPlans.price : selectedPlans.price * 12}/{monthlyPlan ? 'mo' : 'yr'}
+            </p>
+          </div>
+        </div>
+        {addOnsSelectedValue.map((item) => (
+          <div className="finish-2" key={item.id}>
+            <p className="text-coolGray pt-[10px]">{item.topic}</p>
+            <p>
+              ${monthlyPlan ? item.price : item.price * 12}/{monthlyPlan ? 'mo' : 'yr'}
+            </p>
+          </div>
         ))}
-           
       </div>
-      <div className="totalling pt-[20px] p-[10px] flex justify-between items-center gap-[3rem[">
-        <p className="text-[12px]">{`Total(per month)`}</p>
-        <p className="total-price text-[12px] text-purpleBlue">{selectedMonthlyPlan? totalPerMonth: totalPerMonth*10}{selectedMonthlyPlan ? `/mo` : `/yr`}</p>
+      <div className="text-sm py-6 flex justify-between items-center">
+        <p className="text-coolGray">Total (per {monthlyPlan ? 'month' : 'year'})</p>
+        <p className="total-price text-[12px] text-purpleBlue font-bold">
+          ${monthlyPlan ? totalPrice : totalPrice * 12}/{monthlyPlan ? 'mo' : 'yr'}
+        </p>
       </div>
-      <div className="bottom">
-        <Link className="goBack no-underline" to="/add-ons">
-          Go back
-        </Link>
-        <button
-          onClick={() => {
-            navigate("/thank-you");
-          }}
-          className="bg-purpleBlue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
+      <div className="flex justify-between items-center sm:mt-[30px] pt-20">
+        <p
+          className="no-underline text-lightGray font-bold cursor-pointer hover:underline"
+          onClick={prevPage}
         >
-          Confirm
+          Go back
+        </p>
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="bg-purpleBlue text-white py-3 px-4 rounded-md float-right cursor-pointer text-xs"
+        >
+          Next Step
         </button>
       </div>
     </div>
   );
 }
+
 export default Finishing;

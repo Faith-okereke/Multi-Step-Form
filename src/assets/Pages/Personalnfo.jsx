@@ -1,88 +1,89 @@
 import "/src/App.css";
-import { useContext, createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import SelectPlan from "./SelectPlan";
+import { useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ContextData } from "../../ContextStore";
 
-export default function Personalnfo() {
-  const [elments, setElements] = useState(
-    JSON.parse(localStorage.getItem("")) || {
-      name: "",
-      email: "",
-      number: "",
-    }
-  );
-  useEffect(() => {
-    localStorage.setItem("", JSON.stringify(elments));
-  });
-  const Context = createContext();
-  const navigate = useNavigate();
-  function SubmitPersonalInfo(event) {
+export default function PersonalInfo() { 
+  const {
+    personalData,
+    setPersonalData,
+    nextPage,
+  } = useContext(ContextData);
+
+  function submitPersonalInfo(event) {
     event.preventDefault();
 
-    if (elments.name && elments.email && elments.number) {
-      navigate("/select-plan");
-      console.log(elments);
+    if (personalData.name && personalData.email && personalData.number) {
+      nextPage();
+      console.log(personalData);
     } else {
       toast.error("Enter a valid Input");
     }
   }
+
   function changeInput(e) {
-    setElements({
-      ...elments,
+    setPersonalData({
+      ...personalData,
       [e.target.name]: e.target.value,
     });
   }
+
   return (
     <>
-      <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
+      <div className="">
         <ToastContainer />
-        <div className="firstStep">
-          <h2 className="font-bold">Personal info</h2>
+        <div className="">
+          <h2 className="font-bold text-marineBlue text-xl">Personal info</h2>
           <p className="pb-[15px] text-coolGray text-[12px] sm:text-[14px]">
-            {" "}
             Please provide your name, email address, and phone number.
           </p>
-          <form onSubmit={SubmitPersonalInfo} id="personalnfo" action="">
-            <div>
-              <label htmlFor="Name">Name</label>
+          <form onSubmit={submitPersonalInfo} id="personalInfo" >
+            <div className="flex flex-col gap-2">
+              <label className="text-marineBlue" htmlFor="name">Name</label> {/* Updated for accessibility */}
               <input
+              className="border-2 rounded-md p-2"
                 onChange={changeInput}
                 name="name"
                 type="text"
                 placeholder="e.g. Stephen King"
-                value={elments.name}
+                value={personalData.name}
+                id="name"
               />
             </div>
-            <div>
-              <label htmlFor="Email"> Email Address</label>
+            <div className="flex flex-col gap-2">
+              <label className="text-marineBlue pt-3" htmlFor="email">Email Address</label> {/* Updated for accessibility */}
               <input
+              className="border-2 rounded-md p-2"
                 onChange={changeInput}
                 name="email"
                 type="email"
                 placeholder="e.g. stephenking@lorem.com"
-                value={elments.email}
+                value={personalData.email}
+                id="email"
               />
             </div>
-            <div>
-              <label htmlFor="Phone">Phone Number</label>
+            <div className="flex flex-col gap-2 ">
+              <label className="text-marineBlue pt-3" htmlFor="number">Phone Number</label>
               <input
+              className="border-2 rounded-md p-2"
                 onChange={changeInput}
                 name="number"
                 type="tel"
                 placeholder="e.g. +1 234 567 890"
-                value={elments.number}
+                value={personalData.number}
+                id="number"
               />
             </div>
-            <div></div>
-
+            <div className="pt-20 bg-white">
             <button
               type="submit"
-              className="bg-marineBlue text-white py-2 px-3 rounded-md float-right cursor-pointer text-xs"
+              className="bg-marineBlue text-white py-3 px-4  rounded-md float-right cursor-pointer text-xs"
             >
               Next Step
             </button>
+            </div>
+           
           </form>
         </div>
       </div>

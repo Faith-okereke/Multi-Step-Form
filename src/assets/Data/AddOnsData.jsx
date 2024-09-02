@@ -1,8 +1,5 @@
-import { useState}  from "react";
-import { createContext } from "react";
-const AddContext = createContext()
-export const AddOnsContext =({children})=>{
-    const [addOnsData, setAddOnsData] = useState([
+ const AddOnsContext =
+   [
         {
             id: 1,
             topic: "Online Research" ,
@@ -22,20 +19,7 @@ export const AddOnsContext =({children})=>{
             perks: "Custom theme on your profile",
             price: 2,
         },
-    ])
-    const [addOnsSelectedValue, setAddOnsSelectedValue] = useState([
-    ])
-    return(
-        <AddContext.Provider 
-        value={{
-            addOnsData,
-            setAddOnsData,
-            addOnsSelectedValue,
-            setAddOnsSelectedValue,
-        }}
-        >
-        {children}
-        </AddContext.Provider>
-    )
-}
-export default AddContext
+    ]
+
+
+export default AddOnsContext

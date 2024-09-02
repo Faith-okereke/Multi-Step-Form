@@ -1,25 +1,15 @@
 import "/src/App.css";
 import { useContext, useState } from "react";
-import ContextPlans from "../Data/SelectPlanData";
-import { useNavigate, Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-
+import { ContextData } from "../../ContextStore";
+import PlanData from "../Data/SelectPlanData";
+import PrevNextKeys from "../Component/PrevNextKeys";
 export default function SelectPlan() {
+  const { nextPage, selectedPlans,setSelectedPlans, monthly,setMonthly } = useContext(ContextData);
+
   const [isChecked, setChecked] = useState({ checked: false });
-  const navigate = useNavigate();
-  const SelectPlans = useContext(ContextPlans);
   const [num, setNum] = useState(0);
-  const { selectedPlans, setSelectedPlans } = useContext(ContextPlans);
-
-  const planSelect = (id) => {
-    setSelectedPlans({
-      plan: SelectPlans.monthly[id].plan,
-      price: SelectPlans.monthly[id].price,
-    });
-    setNum(id + 1);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(selectedPlans.plan);
@@ -32,7 +22,7 @@ export default function SelectPlan() {
     ) {
       toast.error("Select a plan");
     } else {
-      navigate("/add-ons");
+      nextPage();
     }
   };
 
@@ -51,19 +41,28 @@ export default function SelectPlan() {
     });
     return true;
   };
+  const planSelect = (id) => {
+    setSelectedPlans({
+      plan: monthly[id].plan,
+      price: monthly[id].price,
+    });
+    setNum(id + 1);
+  };
 
   const styling = {
-    border: "1.5px solid hsl(243, 100%, 62%)",
+    border: "2px solid hsl(243, 100%, 62%)",
     backgroundColor: " hsl(231, 100%, 99%)",
   };
   return (
-    <div className="mainSection rounded-lg z-10 bg-white mt-[-50px] pl-3 pr-3 mx-[20px] pb-3 sm:mt-0">
+    <div className="">
       <ToastContainer />
       <h2 className="font-[700] text-[20px]">Select your plan</h2>
-      <p className="pb-[15px] text-[12px] text-coolGray">You have the option of monthly or yearly billing.</p>
-      <form id="selectPlanForm">
-        <div className="stepTwoFlex flex-col sm:flex-row">
-          {SelectPlans.monthly.map((item, idx) => (
+      <p className="pb-[15px] text-[12px] text-coolGray">
+        You have the option of monthly or yearly billing.
+      </p>
+      <form onSubmit={handleSubmit} id="selectPlanForm">
+        <div className="flex flex-col sm:flex-row md:gap-8 gap-3">
+          {PlanData.map((item, idx) => (
             <div
               onClick={() => planSelect(idx)}
               style={num == idx + 1 ? styling : null}
@@ -124,17 +123,7 @@ export default function SelectPlan() {
             Yearly
           </p>
         </div>
-        <div className="bottom items-center mt-3 sm:mt-[30px]">
-          <Link className="goBack no-underline" to="/">
-            Go back
-          </Link>
-          <button
-            onClick={handleSubmit}
-            className="bg-marineBlue text-white py-2 px-3 rounded-md text-xs float-right cursor-pointer mt-8"
-          >
-            Next Step
-          </button>
-        </div>
+       <PrevNextKeys/>
       </form>
     </div>
   );
