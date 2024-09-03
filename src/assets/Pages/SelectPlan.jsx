@@ -12,13 +12,10 @@ export default function SelectPlan() {
     selectedPlans,
     setSelectedPlans,
     setIsMonthlyPlan,
-    planData,
-    setPlanData,
     isChecked,
     setChecked,
   } = useContext(ContextData);
 
-  // Use selectedPlans from context to initialize num
   const [num, setNum] = useState(() => {
     const selectedPlanIndex = PlanDataContext.findIndex(
       (plan) => plan.plan === selectedPlans.plan
