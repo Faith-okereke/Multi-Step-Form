@@ -1,20 +1,33 @@
 import "/src/App.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { ContextData } from "../../ContextStore";
-import PlanData from "../Data/SelectPlanData";
+import PlanDataContext from "../Data/SelectPlanData";
 import PrevNextKeys from "../Component/PrevNextKeys";
-export default function SelectPlan() {
-  const { nextPage, selectedPlans,setSelectedPlans, monthly,setMonthly } = useContext(ContextData);
 
-  const [isChecked, setChecked] = useState({ checked: false });
-  const [num, setNum] = useState(0);
+export default function SelectPlan() {
+  const {
+    nextPage,
+    selectedPlans,
+    setSelectedPlans,
+    setIsMonthlyPlan,
+    planData,
+    setPlanData,
+    isChecked,
+    setChecked,
+  } = useContext(ContextData);
+
+  // Use selectedPlans from context to initialize num
+  const [num, setNum] = useState(() => {
+    const selectedPlanIndex = PlanDataContext.findIndex(
+      (plan) => plan.plan === selectedPlans.plan
+    );
+    return selectedPlanIndex !== -1 ? selectedPlanIndex + 1 : 0;
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(selectedPlans.plan);
-    console.log(selectedPlans.price);
-    console.log(num);
     if (
       selectedPlans.plan === "" ||
       selectedPlans.plan === undefined ||
@@ -28,31 +41,45 @@ export default function SelectPlan() {
 
   const handleToggle = (event) => {
     const { checked, name } = event.target;
-    if (isChecked.checked) {
-      console.log("Monthly Plan activated");
-    } else {
-      console.log("Yearly Plan activated");
-    }
-    setChecked((prevData) => {
-      return {
-        ...prevData,
-        [name]: checked,
-      };
-    });
-    return true;
+    setIsMonthlyPlan(!checked);
+    setChecked((prevData) => ({
+      ...prevData,
+      [name]: checked,
+    }));
   };
+
   const planSelect = (id) => {
     setSelectedPlans({
-      plan: monthly[id].plan,
-      price: monthly[id].price,
+      plan: PlanDataContext[id].plan,
+      price: isChecked.checked
+        ? PlanDataContext[id].price * 10
+        : PlanDataContext[id].price,
     });
     setNum(id + 1);
   };
+
+  useEffect(() => {
+    // Update selectedPlans when isChecked changes
+    if (selectedPlans.plan) {
+      const planIndex = PlanDataContext.findIndex(
+        (plan) => plan.plan === selectedPlans.plan
+      );
+      if (planIndex !== -1) {
+        setSelectedPlans({
+          plan: selectedPlans.plan,
+          price: isChecked.checked
+            ? PlanDataContext[planIndex].price * 10
+            : PlanDataContext[planIndex].price,
+        });
+      }
+    }
+  }, [isChecked.checked]);
 
   const styling = {
     border: "2px solid hsl(243, 100%, 62%)",
     backgroundColor: " hsl(231, 100%, 99%)",
   };
+
   return (
     <div className="">
       <ToastContainer />
@@ -62,10 +89,10 @@ export default function SelectPlan() {
       </p>
       <form onSubmit={handleSubmit} id="selectPlanForm">
         <div className="flex flex-col sm:flex-row md:gap-8 gap-3">
-          {PlanData.map((item, idx) => (
+          {PlanDataContext.map((item, idx) => (
             <div
               onClick={() => planSelect(idx)}
-              style={num == idx + 1 ? styling : null}
+              style={num === idx + 1 ? styling : null}
               className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-6 rounded-md  sm:mt-[40px] cursor-pointer"
               key={item.id}
             >
@@ -90,13 +117,13 @@ export default function SelectPlan() {
         </div>
         <div className="toggle-div bg-alabaster flex justify-center items-center py-3 space-x-8 rounded-md mt-4">
           <p
-            className={`${
-              handleToggle ? "text-coolGray " : "text-marineBlue"
-            }text-[12px] sm:text-[14px] font-[500]"`}
+            className={`text-[12px] sm:text-[14px] font-[500] ${
+              !isChecked.checked ? "text-marineBlue" : "text-coolGray"
+            }`}
           >
             Monthly
           </p>
-          <div className="toggle-switch relative my-0 mx-2">
+          <div className="flex items-center justify-between relative my-0 mx-2">
             <input
               onChange={handleToggle}
               style={{ visibility: "hidden" }}
@@ -110,20 +137,28 @@ export default function SelectPlan() {
               className="inline-flex relative items-center cursor-pointer"
             >
               <div
-                onClick={handleToggle}
-                className="w-11 h-6 peer-focus:outline-none  rounded-full peer dark:bg-marineBlue peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600"
-              ></div>{" "}
+                className={`w-11 h-6 rounded-full ${
+                  isChecked.checked ? "bg-marineBlue" : "bg-gray-300"
+                } transition-colors`}
+              >
+                <div
+                  className={`absolute top-[4px] left-[4px] w-4 h-4 bg-white border border-gray-300 rounded-full transition-transform ${
+                    isChecked.checked ? "translate-x-full border-white" : ""
+                  }`}
+                ></div>
+              </div>
             </label>
           </div>
+
           <p
-            className={`${
-              handleToggle ? "text-marineBlue" : "text-coolGray "
-            } text-[12px] sm:text-[14px] font-[500]`}
+            className={`text-[12px] sm:text-[14px] font-[500] ${
+              isChecked.checked ? "text-marineBlue" : "text-coolGray"
+            }`}
           >
             Yearly
           </p>
         </div>
-       <PrevNextKeys/>
+        <PrevNextKeys />
       </form>
     </div>
   );

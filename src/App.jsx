@@ -35,12 +35,10 @@ function App() {
         </div>
       </div>
 
-      <div className="flex flex-row md:justify-end justify-center align-baseline mt-20 text-sm md:text-base pb-6">
+      <div className="flex flex-row md:justify-end justify-center align-baseline mt-20 text-xs md:text-base pb-6">
         <p>
           Challenge by
-          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
-            Frontend Mentor
-          </a>
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend Mentor</a>
           . Coded by{" "}
           <a href="https://www.frontendmentor/Faith-okereke">Faith Okereke</a>
         </p>

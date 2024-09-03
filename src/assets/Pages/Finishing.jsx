@@ -8,28 +8,27 @@ function Finishing() {
     nextPage,
     prevPage,
     selectedPlans,
-    monthlyPlan,
+    monthly,
     addOnsSelectedValue,
-    setCurrentStep
+    setCurrentStep,
+    isChecked
   } = useContext(ContextData);
 
-  const totalPrice = selectedPlans.price + addOnsSelectedValue.reduce((total, item) => total + item.price, 0);
+  const totalPrice = selectedPlans.price +
+  addOnsSelectedValue.reduce((total, item) => total + item.price * (!isChecked.checked ? 1 : 10), 0);
 
+  console.log(addOnsSelectedValue);
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (addOnsSelectedValue.length === 0) {
-      toast.error("Select at least one add-on");
-    } else {
-      nextPage();
-    }
+    nextPage();
   };
 
   const handleChangePlan = () => {
-    setCurrentStep(2); 
+    setCurrentStep(2);
   };
 
   return (
-    <div className="">
+    <div className="w-[30vw]">
       <ToastContainer />
       <h2 className="font-bold text-[20px]">Finishing up</h2>
       <p className="pb-[15px] text-[12px] text-coolGray">
@@ -40,30 +39,38 @@ function Finishing() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex flex-col gap-0">
               <h5 className="text-sm font-900 text-marineBlue">
-                {selectedPlans.plan} ({monthlyPlan ? 'Monthly' : 'Yearly'})
+                {selectedPlans.plan} ({!isChecked.checked ? "Monthly" : "Yearly"})
               </h5>
-              <a className="text-coolGray span-change hover:underline text-xs cursor-pointer" onClick={handleChangePlan}>
+              <a
+                className="text-coolGray span-change underline hover:text-purpleBlue text-[9px] cursor-pointer"
+                onClick={handleChangePlan}
+              >
                 Change
               </a>
             </div>
             <p className="text-xs font-bold text-marineBlue">
-              ${monthlyPlan ? selectedPlans.price : selectedPlans.price * 12}/{monthlyPlan ? 'mo' : 'yr'}
+              {selectedPlans.price} /{!isChecked.checked? "mo" : "yr"}
             </p>
           </div>
         </div>
         {addOnsSelectedValue.map((item) => (
-          <div className="finish-2" key={item.id}>
-            <p className="text-coolGray pt-[10px]">{item.topic}</p>
+          <div
+            className="text-xs flex items-center justify-between"
+            key={item.id}
+          >
+            <p className="text-coolGray py-2">{item.topic}</p>
             <p>
-              ${monthlyPlan ? item.price : item.price * 12}/{monthlyPlan ? 'mo' : 'yr'}
+             {!isChecked.checked ? ` ${ item.price }/mo` : `${item.price*10} /yr`}
             </p>
           </div>
         ))}
       </div>
       <div className="text-sm py-6 flex justify-between items-center">
-        <p className="text-coolGray">Total (per {monthlyPlan ? 'month' : 'year'})</p>
+        <p className="text-coolGray">
+          Total (per {!isChecked.checked ? "month" : "year"})
+        </p>
         <p className="total-price text-[12px] text-purpleBlue font-bold">
-          ${monthlyPlan ? totalPrice : totalPrice * 12}/{monthlyPlan ? 'mo' : 'yr'}
+          ${totalPrice} /{!isChecked.checked ? "mo" : "yr"}
         </p>
       </div>
       <div className="flex justify-between items-center sm:mt-[30px] pt-20">

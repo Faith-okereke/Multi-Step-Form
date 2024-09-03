@@ -6,11 +6,11 @@ export default function Nav() {
   return (
     <>
       <div className="">
-        <nav className=" bg-[url(/bg-sidebar-mobile.svg)]  sm:bg-[url(/bg-sidebar-desktop.svg)] bg-cover bg-no-repeat sm:block flex justify-center md:gap-3 gap-5 items-center p-3 md:w-full w-screen h-full md:rounded-md">
+        <nav className=" bg-[url(/bg-sidebar-mobile.svg)]  sm:bg-[url(/bg-sidebar-desktop.svg)] bg-cover bg-no-repeat sm:block flex justify-center md:gap-3 gap-5 items-center p-3 md:w-full w-screen h-full md:rounded-md ">
           {/* Sidebar start */}
           {NavBar.map((item) => (
             <div
-              className="md:pl-3 md:pr-16 py-16 md:py-0 md:px-0"
+              className="md:pl-3 md:pr-16 py-16 md:py-0 md:px-0 "
               key={item.id}
             >
               <div className="flex md:gap-3 items-center justify-start pt-4">

@@ -2,7 +2,7 @@ import arcade from "/src/assets/images/icon-arcade.svg";
 import advanced from "/src/assets/images/icon-advanced.svg";
 import pro from "/src/assets/images/icon-pro.svg";
 
-const PlanData = [
+const PlanDataContext = [
   {
     id: 1,
     img: arcade,
@@ -23,4 +23,4 @@ const PlanData = [
   },
 ];
 
-export default PlanData;
+export default PlanDataContext;

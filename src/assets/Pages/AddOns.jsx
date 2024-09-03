@@ -1,19 +1,27 @@
 import "/src/App.css";
 import { ContextData } from "../../ContextStore";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import AddOnsContext from "../Data/AddOnsData";
 import PrevNextKeys from "../Component/PrevNextKeys";
 
 function AddOns() {
-  const [checkedAddOns, setCheckedAddOns] = useState({});
   const {
     nextPage,
     addOnsSelectedValue,
     setAddOnsSelectedValue,
     selectedYearlyPlan,
     addOnsData,
+    isChecked
   } = useContext(ContextData);
+
+  const [checkedAddOns, setCheckedAddOns] = useState(() => {
+    const initialState = {};
+    addOnsSelectedValue.forEach(addon => {
+      initialState[addon.id] = true;
+    });
+    return initialState;
+  });
 
   const anyCheckboxChecked = Object.values(checkedAddOns).some(Boolean);
 
@@ -32,13 +40,16 @@ function AddOns() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!anyCheckboxChecked) {
-      toast.error("Select at least one add-on");
-    } else {
-      nextPage();
-    }
-    console.log(addOnsSelectedValue)
+    nextPage();
   };
+
+  // Update global state when local state changes
+  useEffect(() => {
+    const selectedAddOns = Object.entries(checkedAddOns)
+      .filter(([_, isChecked]) => isChecked)
+      .map(([id]) => addOnsData[id]);
+    setAddOnsSelectedValue(selectedAddOns);
+  }, [checkedAddOns, addOnsData, setAddOnsSelectedValue]);
 
   return (
     <div className="">
@@ -74,7 +85,7 @@ function AddOns() {
               </div>
             </div>
             <p className="text-[9px] text-purpleBlue">
-              {selectedYearlyPlan
+              {isChecked.checked
                 ? `+$${item.price * 10}/yr`
                 : `+$${item.price}/mo`}
             </p>
