@@ -83,10 +83,25 @@ function Finishing() {
         <button
           onClick={handleSubmit}
           type="submit"
+          className="bg-purpleBlue text-white py-3 px-4 rounded-md float-right cursor-pointer text-xs hidden lg:block"
+        >
+          Next Step
+        </button>
+        <div className="lg:hidden flex justify-between w-screen p-5 fixed bottom-0 bg-white right-0 items-center">
+        <p
+          className="no-underline text-lightGray font-bold cursor-pointer hover:underline"
+          onClick={prevPage}
+        >
+          Go back
+        </p>
+        <button
+          onClick={handleSubmit}
+          type="submit"
           className="bg-purpleBlue text-white py-3 px-4 rounded-md float-right cursor-pointer text-xs"
         >
           Next Step
         </button>
+        </div>
       </div>
     </div>
   );
