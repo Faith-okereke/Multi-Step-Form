@@ -28,7 +28,7 @@ function Finishing() {
   };
 
   return (
-    <div className="w-[30vw]">
+    <div className="lg:w-[30vw]">
       <ToastContainer />
       <h2 className="font-bold text-[20px]">Finishing up</h2>
       <p className="pb-[15px] text-[12px] text-coolGray">

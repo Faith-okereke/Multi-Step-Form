@@ -24,6 +24,10 @@ export default {
         'marineBlue': "hsl(213, 96%, 18%)",
         'fullWhite': "hsl(217, 100%, 97%)",
         'purpleBlue': "hsl(243, 100%, 62%)",
+      },
+      backgroundImage:{
+        'desktop' :"url('../../../public/bg-sidebar-desktop.svg')",
+        'mobile' :"url('../../../public/bg-sidebar-mobile.svg')"
       }
     },
   },

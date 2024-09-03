@@ -88,7 +88,7 @@ export default function SelectPlan() {
         You have the option of monthly or yearly billing.
       </p>
       <form onSubmit={handleSubmit} id="selectPlanForm">
-        <div className="flex flex-col sm:flex-row md:gap-8 gap-3">
+        <div className="flex lg:flex-row sm:flex-row flex-col justify-center md:gap-8 gap-3">
           {PlanDataContext.map((item, idx) => (
             <div
               onClick={() => planSelect(idx)}
@@ -138,7 +138,7 @@ export default function SelectPlan() {
             >
               <div
                 className={`w-11 h-6 rounded-full ${
-                  isChecked.checked ? "bg-marineBlue" : "bg-gray-300"
+                  isChecked.checked ? "bg-marineBlue" : "bg-marineBlue"
                 } transition-colors`}
               >
                 <div

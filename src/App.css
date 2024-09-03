@@ -22,4 +22,5 @@
 .notActive{
   background-color: transparent;
   color: #fff;
+  border: 1px solid white;
 }
