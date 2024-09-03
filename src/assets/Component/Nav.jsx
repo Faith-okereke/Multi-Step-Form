@@ -6,7 +6,7 @@ export default function Nav() {
   const { currentStep } = useContext(ContextData);
   return (
     <>
-      <div className="md:bg-[url('/public/bg-sidebar-desktop.svg)] bg-[url('public/bg-sidebar-mobile.svg)]  bg-no-repeat bg-cover md:pr-12 md:pl-8 md:py-8 py-20 lg:rounded-lg rounded-none">
+      <div className="md:bg-[url('/bg-sidebar-desktop.svg)] bg-[url('/bg-sidebar-mobile.svg)]  bg-no-repeat bg-cover md:pr-12 md:pl-8 md:py-8 py-20 lg:rounded-lg rounded-none">
         <nav className="flex md:flex-col lg:justify-start justify-center gap-5">
           {/* Sidebar start */}
           {NavBar.map((item) => (
