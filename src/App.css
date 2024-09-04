@@ -10,17 +10,25 @@
   font-size: 11px;
   text-align: center;
   padding-top: 50px;
+  opacity: 0.1;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
-
 }
-.active{
+h2 {
+  font-weight: 700;
+  color: hsl(213, 96%, 18%);
+  padding-bottom: 15px;
+}
+.active {
   background-color: hsl(206, 94%, 87%);
   color: #000000;
 }
-.notActive{
+.notActive {
   background-color: transparent;
   color: #fff;
   border: 1px solid white;
+}
+.error {
+  border: 1px solid hsl(354, 84%, 57%);
 }

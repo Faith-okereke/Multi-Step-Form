@@ -9,14 +9,14 @@ export default function PrevNextKeys() {
       {" "}
       <div className="flex justify-between items-center sm:mt-[30px] pt-20">
         <p
-          className=" no-underline text-lightGray font-bold cursor-pointer hover:underline"
+          className=" no-underline text-lightGray font-bold cursor-pointer   hover:text-marineBlue"
           onClick={prevPage}
         >
           Go back
         </p>
         <button
           type="submit"
-          className="bg-marineBlue text-white py-3 px-4  rounded-md float-right cursor-pointer text-xs"
+          className="bg-marineBlue text-white py-3 px-4  rounded-md float-right cursor-pointer text-xs hover:bg-opacity-80 "
         >
           Next Step
         </button>

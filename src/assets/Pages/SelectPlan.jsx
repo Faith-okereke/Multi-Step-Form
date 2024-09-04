@@ -73,7 +73,7 @@ export default function SelectPlan() {
   }, [isChecked.checked]);
 
   const styling = {
-    border: "2px solid hsl(243, 100%, 62%)",
+    border: "1px solid hsl(243, 100%, 62%)",
     backgroundColor: " hsl(231, 100%, 99%)",
   };
 
@@ -90,7 +90,7 @@ export default function SelectPlan() {
             <div
               onClick={() => planSelect(idx)}
               style={num === idx + 1 ? styling : null}
-              className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-6 rounded-md  sm:mt-[40px] cursor-pointer"
+              className="border-hsl(231, 11%, 63%) border-[1px] p-[10px] sm:w-[110px] sm:pr-6 rounded-md  sm:mt-[40px] cursor-pointer  hover:border-purpleBlue"
               key={item.id}
             >
               <div className="flex justify-left items-center gap-4  sm:block">

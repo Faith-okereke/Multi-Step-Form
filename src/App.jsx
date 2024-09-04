@@ -8,6 +8,7 @@ import ThankYou from "./assets/Pages/ThankYou";
 import "./index.css";
 import { ContextData } from "./ContextStore";
 import Nav from "./assets/Component/Nav";
+
 function App() {
   const { currentStep } = useContext(ContextData);
   const formComponents = [Personalnfo, SelectPlan, AddOns, Finishing, ThankYou];
@@ -35,7 +36,7 @@ function App() {
         </div>
       </div>
 
-      <div className="flex flex-row md:justify-end justify-center align-baseline mt-20 text-xs md:text-base pb-6">
+      <div className="flex flex-row md:justify-end justify-center align-baseline mt-20 text-xs md:text-base pb-6 opacity-20">
         <p>
           Challenge by
           <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend Mentor</a>

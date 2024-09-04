@@ -43,7 +43,7 @@ function AddOns() {
     nextPage();
   };
 
-  // Update global state when local state changes
+
   useEffect(() => {
     const selectedAddOns = Object.entries(checkedAddOns)
       .filter(([_, isChecked]) => isChecked)
@@ -62,14 +62,15 @@ function AddOns() {
         {AddOnsContext.map((item) => (
           <div
             key={item.id}
-            className={`flex mt-[10px] md:w-[400px] w-full justify-between border-solid rounded-lg cursor-pointer p-3 items-center ${
+            className={`flex mt-[10px] md:w-[400px] w-full justify-between border-solid rounded-lg cursor-pointer p-3 items-center hover:border-marineBlue ${
               checkedAddOns[item.id] 
-                ? "border-[1.5px] border-purpleBlue" 
+                ? "border-[1px] border-marineBlue" 
                 : "border border-coolGray"
             }`}
           >
             <div className="flex items-center gap-3">
               <input
+              className="cursor-pointer"
                 type="checkbox"
                 id={`checked-${item.id}`}
                 checked={checkedAddOns[item.id] || false}

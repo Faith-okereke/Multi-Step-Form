@@ -12,7 +12,8 @@ export default {
         'coolGray': "hsl(231, 11%, 63%)",
         'lightGray': "hsl(229, 24%, 87%)",
         'pastelBlue': "hsl(228, 100%, 84%)",
-        'lightBlue': "hsl(206, 94%, 87%)"
+        'lightBlue': "hsl(206, 94%, 87%)",
+        'brightRed': "hsl(354, 84%, 57%)"
 
       },
       borderColor: {
@@ -24,6 +25,7 @@ export default {
         'marineBlue': "hsl(213, 96%, 18%)",
         'fullWhite': "hsl(217, 100%, 97%)",
         'purpleBlue': "hsl(243, 100%, 62%)",
+        'Mongolia' : 'hsl(217, 100%, 97%)'
       },
       backgroundImage:{
         'desktop' :"url('../../../public/bg-sidebar-desktop.svg')",

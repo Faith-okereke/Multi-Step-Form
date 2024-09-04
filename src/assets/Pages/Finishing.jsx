@@ -34,7 +34,7 @@ function Finishing() {
       <p className="pb-[15px] text-[12px] text-coolGray">
         Double-check everything looks OK before confirming.
       </p>
-      <div className="bg-lightGray rounded-lg p-3 my-5">
+      <div className="bg-Mongolia rounded-lg p-3 my-5">
         <div className="border-b-[1px] border-b-coolGray">
           <div className="flex items-center justify-between mb-6">
             <div className="flex flex-col gap-0">
@@ -42,14 +42,14 @@ function Finishing() {
                 {selectedPlans.plan} ({!isChecked.checked ? "Monthly" : "Yearly"})
               </h5>
               <a
-                className="text-coolGray span-change underline hover:text-purpleBlue text-[9px] cursor-pointer"
+                className="text-coolGray span-change underline hover:text-purpleBlue text-[10px] cursor-pointer"
                 onClick={handleChangePlan}
               >
                 Change
               </a>
             </div>
-            <p className="text-xs font-bold text-marineBlue">
-              {selectedPlans.price} /{!isChecked.checked? "mo" : "yr"}
+            <p className="text-xs font-extra-bold text-marineBlue">
+              ${selectedPlans.price} /{!isChecked.checked? "mo" : "yr"}
             </p>
           </div>
         </div>
@@ -60,7 +60,7 @@ function Finishing() {
           >
             <p className="text-coolGray py-2">{item.topic}</p>
             <p>
-             {!isChecked.checked ? ` ${ item.price }/mo` : `${item.price*10} /yr`}
+             {!isChecked.checked ? ` $${ item.price }/mo` : `$${item.price*10} /yr`}
             </p>
           </div>
         ))}
@@ -73,9 +73,9 @@ function Finishing() {
           ${totalPrice} /{!isChecked.checked ? "mo" : "yr"}
         </p>
       </div>
-      <div className="flex justify-between items-center sm:mt-[30px] pt-20">
+      <div className="lg:flex justify-between items-center sm:mt-[30px] pt-20  hidden ">
         <p
-          className="no-underline text-lightGray font-bold cursor-pointer hover:underline"
+          className="no-underline text-lightGray font-bold cursor-pointer hover:text-marineBlue"
           onClick={prevPage}
         >
           Go back
@@ -83,13 +83,15 @@ function Finishing() {
         <button
           onClick={handleSubmit}
           type="submit"
-          className="bg-purpleBlue text-white py-3 px-4 rounded-md float-right cursor-pointer text-xs hidden lg:block"
+          className="bg-purpleBlue text-white py-3 px-4 rounded-md float-right cursor-pointer text-xs  hover:bg-opacity-80 "
         >
           Next Step
         </button>
-        <div className="lg:hidden flex justify-between w-screen p-5 fixed bottom-0 bg-white right-0 items-center">
+       
+      </div>
+      <div className="lg:hidden flex justify-between w-screen p-5 fixed bottom-0 bg-white right-0 items-center">
         <p
-          className="no-underline text-lightGray font-bold cursor-pointer hover:underline"
+          className="no-underline text-lightGray font-bold cursor-pointer"
           onClick={prevPage}
         >
           Go back
@@ -102,7 +104,6 @@ function Finishing() {
           Next Step
         </button>
         </div>
-      </div>
     </div>
   );
 }

@@ -6,15 +6,20 @@ import { ContextData } from "../../ContextStore";
 
 export default function PersonalInfo() {
   const { personalData, setPersonalData, nextPage } = useContext(ContextData);
+  const [error, setError] = useState(false);
 
   function submitPersonalInfo(event) {
     event.preventDefault();
 
-    if (personalData.name && personalData.email && personalData.number) {
-      nextPage();
-      console.log(personalData);
+    if (!personalData.name) {
+      setError(!error);
+    } else if (!personalData.email) {
+      setError(!error);
+    } else if (!personalData.number) {
+      setError(!error);
     } else {
-      toast.error("Enter a valid Input");
+      setError(false)
+      nextPage()
     }
   }
 
@@ -23,6 +28,7 @@ export default function PersonalInfo() {
       ...personalData,
       [e.target.name]: e.target.value,
     });
+    setError(false)
   }
 
   return (
@@ -36,12 +42,21 @@ export default function PersonalInfo() {
           </p>
           <form onSubmit={submitPersonalInfo} id="personalInfo">
             <div className="flex flex-col gap-2">
-              <label className="text-marineBlue" htmlFor="name">
-                Name
-              </label>{" "}
-              {/* Updated for accessibility */}
+              <div className="flex justify-between">
+                <label className="text-marineBlue" htmlFor="name">
+                  Name
+                </label>
+                {error && (
+                  <p className="text-brightRed text-sm font-bold text-right">
+                    This field is required
+                  </p>
+                )}
+              </div>
+
               <input
-                className="border-2 rounded-md p-2"
+                className={`border-[1px] rounded-md p-2 outline-marineBlue  ${
+                  error ? `error` : ``
+                }`}
                 onChange={changeInput}
                 name="name"
                 type="text"
@@ -51,12 +66,21 @@ export default function PersonalInfo() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-marineBlue pt-3" htmlFor="email">
-                Email Address
-              </label>{" "}
-              {/* Updated for accessibility */}
+              <div className="flex justify-between pt-4">
+                <label className="text-marineBlue" htmlFor="email">
+                  Email address
+                </label>
+                {error && (
+                  <p className="text-brightRed text-sm font-bold text-right">
+                    This field is required
+                  </p>
+                )}
+              </div>
+
               <input
-                className="border-2 rounded-md p-2"
+                className={`border-[1px] rounded-md p-2 outline-marineBlue ${
+                  error ? `error` : ``
+                }`}
                 onChange={changeInput}
                 name="email"
                 type="email"
@@ -66,11 +90,21 @@ export default function PersonalInfo() {
               />
             </div>
             <div className="flex flex-col gap-2 ">
-              <label className="text-marineBlue pt-3" htmlFor="number">
-                Phone Number
-              </label>
+              <div className="flex justify-between pt-4">
+                <label className="text-marineBlue" htmlFor="number">
+                  Phone number
+                </label>
+                {error && (
+                  <p className="text-brightRed text-sm font-bold text-right">
+                    This field is required
+                  </p>
+                )}
+              </div>
+
               <input
-                className="border-2 rounded-md p-2"
+                className={`border-[1px] rounded-md p-2 outline-marineBlue ${
+                  error ? `error` : ``
+                }`}
                 onChange={changeInput}
                 name="number"
                 type="tel"
@@ -82,7 +116,7 @@ export default function PersonalInfo() {
             <div className="pt-20 hidden lg:block">
               <button
                 type="submit"
-                className="bg-marineBlue text-white py-3 px-4  rounded-md float-right cursor-pointer text-xs"
+                className="bg-marineBlue text-white py-3 px-4  rounded-md float-right cursor-pointer text-xs  hover:bg-opacity-80 "
               >
                 Next Step
               </button>
@@ -90,7 +124,7 @@ export default function PersonalInfo() {
             <div className="lg:hidden flex justify-between w-screen p-5 fixed bottom-0 bg-white right-0 items-center">
               <button
                 type="submit"
-                className="bg-marineBlue text-white py-3 px-4 rounded-lg ml-auto cursor-pointer text-xs"
+                className="bg-marineBlue text-white py-3 px-4 rounded-lg ml-auto cursor-pointer text-xs "
               >
                 Next Step
               </button>
