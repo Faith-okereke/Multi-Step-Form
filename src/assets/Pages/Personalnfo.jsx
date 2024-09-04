@@ -1,25 +1,29 @@
 import "/src/App.css";
 import { useState, useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { ContextData } from "../../ContextStore";
 
 export default function PersonalInfo() {
   const { personalData, setPersonalData, nextPage } = useContext(ContextData);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    name: false,
+    email: false,
+    number: false,
+  });
 
   function submitPersonalInfo(event) {
     event.preventDefault();
+    
+    const newErrors = {
+      name: !personalData.name,
+      email: !personalData.email,
+      number: !personalData.number,
+    };
 
-    if (!personalData.name) {
-      setError(!error);
-    } else if (!personalData.email) {
-      setError(!error);
-    } else if (!personalData.number) {
-      setError(!error);
-    } else {
-      setError(false)
-      nextPage()
+    setError(newErrors);
+    const hasErrors = Object.values(newErrors).some((error) => error);
+
+    if (!hasErrors) {
+      nextPage(); 
     }
   }
 
@@ -28,13 +32,16 @@ export default function PersonalInfo() {
       ...personalData,
       [e.target.name]: e.target.value,
     });
-    setError(false)
+
+    setError({
+      ...error,
+      [e.target.name]: false,
+    });
   }
 
   return (
     <>
       <div className="">
-        <ToastContainer />
         <div className="">
           <h2 className="font-bold text-marineBlue text-xl">Personal info</h2>
           <p className="pb-[15px] text-coolGray text-[12px] sm:text-[14px]">
@@ -46,7 +53,7 @@ export default function PersonalInfo() {
                 <label className="text-marineBlue" htmlFor="name">
                   Name
                 </label>
-                {error && (
+                {error.name && (
                   <p className="text-brightRed text-sm font-bold text-right">
                     This field is required
                   </p>
@@ -55,7 +62,7 @@ export default function PersonalInfo() {
 
               <input
                 className={`border-[1px] rounded-md p-2 outline-marineBlue  ${
-                  error ? `error` : ``
+                  error.name ? `error` : ``
                 }`}
                 onChange={changeInput}
                 name="name"
@@ -70,7 +77,7 @@ export default function PersonalInfo() {
                 <label className="text-marineBlue" htmlFor="email">
                   Email address
                 </label>
-                {error && (
+                {error.email && (
                   <p className="text-brightRed text-sm font-bold text-right">
                     This field is required
                   </p>
@@ -79,7 +86,7 @@ export default function PersonalInfo() {
 
               <input
                 className={`border-[1px] rounded-md p-2 outline-marineBlue ${
-                  error ? `error` : ``
+                  error.email ? `error` : ``
                 }`}
                 onChange={changeInput}
                 name="email"
@@ -94,7 +101,7 @@ export default function PersonalInfo() {
                 <label className="text-marineBlue" htmlFor="number">
                   Phone number
                 </label>
-                {error && (
+                {error.number && (
                   <p className="text-brightRed text-sm font-bold text-right">
                     This field is required
                   </p>
@@ -103,7 +110,7 @@ export default function PersonalInfo() {
 
               <input
                 className={`border-[1px] rounded-md p-2 outline-marineBlue ${
-                  error ? `error` : ``
+                  error.number ? `error` : ``
                 }`}
                 onChange={changeInput}
                 name="number"

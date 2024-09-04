@@ -12,14 +12,11 @@ const PlanType = {
 function ContextStore({ children }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [isChecked, setChecked] = useState({ checked: false });
-  const [personalData, setPersonalData] = useState(() => {
-    const storedData = localStorage.getItem("personalData");
-    return storedData ? JSON.parse(storedData) : {
-      name: "",
-      email: "",
-      number: "",
-    };
-  });
+  const [personalData, setPersonalData] = useState(() => ({
+    name: "",
+    email: "",
+    number: "",
+  }));
 
   const [selectedPlans, setSelectedPlans] = useState({
     plan: "",
